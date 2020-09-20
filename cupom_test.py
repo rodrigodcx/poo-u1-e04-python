@@ -64,7 +64,7 @@ def test_municipio_vazio():
     assert "O campo município do endereço é obrigatório" in str(the_exception) 
     municipio = "Campinas"
 
-def test_estado_vazio:
+def test_estado_vazio():
     global estado
     estado = ""
     with pytest.raises(Exception) as excinfo:
@@ -73,7 +73,7 @@ def test_estado_vazio:
     assert "O campo estado do endereço é obrigatório" in str(the_exception) 
     estado = "SP"
 
-def test_cnpj_vazio:
+def test_cnpj_vazio():
     global cnpj
     cnpj = ""
     with pytest.raises(Exception) as excinfo:
@@ -82,7 +82,7 @@ def test_cnpj_vazio:
     assert "O campo CNPJ da loja é obrigatório" in str(the_exception) 
     cnpj = "42.591.651/0797-34"
 
-def test_inscricao_estadual_vazia:
+def test_inscricao_estadual_vazia():
     global inscricao_estadual
     inscricao_estadual = ""
     with pytest.raises(Exception) as excinfo:
