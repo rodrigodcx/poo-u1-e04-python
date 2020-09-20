@@ -1,4 +1,5 @@
 import cupom;
+import pytest
 
 nome_loja = "Arcos Dourados Com. de Alimentos LTDA"
 logradouro = "Av. Projetada Leste"
@@ -14,7 +15,7 @@ cnpj = "42.591.651/0797-34"
 inscricao_estadual = "244.898.500.113"
 
 def test_loja_completa():
-    assert cupom.imprime_dados_loja() == '''Arcos Dourados Com. de Alimentos LTDA
+    assert cupom.dados_loja() == '''Arcos Dourados Com. de Alimentos LTDA
 Av. Projetada Leste, 500 EUC F32/33/34
 Br. Sta Genebra - Campinas - SP
 CEP:13080-395 Tel (19) 3756-7408
@@ -23,10 +24,13 @@ CNPJ: 42.591.651/0797-34
 IE: 244.898.500.113
 '''
 
-def test_nome_vazio:
+def test_nome_vazio():
     global nome_loja
     nome_loja = ""
-    assert cupom.imprime_dados_loja() == '''O campo nome da loja é obrigatório'''
+    with pytest.raises(Exception) as excinfo:
+        cupom.dados_loja()
+    the_exception = excinfo.value
+    assert "O campo logradouro do endereço é obrigatório" in str(the_exception) 
     nome_loja = "Arcos Dourados Com. de Alimentos LTDA"
 
 def test_logradouro_vazio:

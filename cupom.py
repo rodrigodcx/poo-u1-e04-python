@@ -11,6 +11,6 @@ observacao = "Loja 1317 (PDP)"
 cnpj = "42.591.651/0797-34"
 inscricao_estadual = "244.898.500.113"
 
-def imprime_dados_loja():
+def dados_loja():
     # Implemente aqui
     return "" 
